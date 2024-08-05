@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netflix-movie-catalog
+  labels:
+    app: netflix-movie-catalog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: netflix-movie-catalog
+  template:
+    metadata:
+        labels:
+          app: netflix-movie-catalog
+    spec:
+      containers:
+      - name: server
+        image: inkcube/netflix-movie-catalog:v1.0.12
+        resources:
+          requests:
+            cpu: 200m
+            memory: 500Mi
+          limits:
+            cpu: 500m
+            memory: 1000Mi
