@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Git push') {
             steps {
-               withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_TOKEN')]) {
+               withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_TOKEN')]) {
                  sh '''
                  git push https://$GITHUB_TOKEN@github.com/alonitac/NetflixInfra2.git main
                  '''
