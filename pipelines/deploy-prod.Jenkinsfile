@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Git setup') {
             steps {
-                sh 'git checkout -b dev || git checkout dev'
+                sh 'git checkout -b main || git checkout main'
             }
         }
         stage('update YAML manifest') {
@@ -28,7 +28,7 @@ pipeline {
             steps {
                withCredentials([usernamePassword(credentialsId: 'github_token', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_TOKEN')]) {
                  sh '''
-                 git push https://$GITHUB_TOKEN@github.com/alonitac/NetflixInfra2.git dev
+                 git push https://$GITHUB_TOKEN@github.com/alonitac/NetflixInfra2.git main
                  '''
                }
             }
