@@ -1,12 +1,10 @@
 pipeline {
-    agent {
-        label 'general'
-    }
+    agent any
 
-    parameters {
-        string(name: 'SERVICE_NAME', defaultValue: '', description: '')
-        string(name: 'IMAGE_FULL_NAME_PARAM', defaultValue: '', description: '')
-    }
+//    parameters {
+//        string(name: 'SERVICE_NAME', defaultValue: '', description: '')
+//        string(name: 'IMAGE_FULL_NAME_PARAM', defaultValue: '', description: '')
+//    }
 
     stages {
         stage('Git setup') {
