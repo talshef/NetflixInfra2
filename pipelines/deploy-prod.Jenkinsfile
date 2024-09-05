@@ -11,6 +11,7 @@ pipeline {
     stages {
         stage('Git setup') {
             steps {
+                sh 'git status'
                 sh 'git checkout -b main || git checkout main'
             }
         }
