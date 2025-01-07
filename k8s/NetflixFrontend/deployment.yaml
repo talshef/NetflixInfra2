@@ -16,11 +16,19 @@ spec:
     spec:
       containers:
       - name: server
-        image: inkcube/netflix-frontend:v1.0.12
-        resources:
-          requests:
-            cpu: 200m
-            memory: 500Mi
-          limits:
-            cpu: 500m
-            memory: 1000Mi
+        image: ofekhalabi/netflix-frontend:9
+        env:
+        - name: MOVIE_CATALOG_SERVICE
+          value: "http://netflix-mc-service:8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: netflix-frontend-service
+spec:
+  selector:
+    app: netflix-frontend
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
